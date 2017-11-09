@@ -35,14 +35,12 @@ export default class HomeScreen extends React.Component {
           <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
 
-            <Text style={styles.getStartedText}>Get started by opening</Text>
-
             <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
               <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
             </View>
 
-            <Text style={styles.getStartedText}>
-              EVANNNNNNN
+            <Text style={styles.getTitle}>
+              Forever Focused
             </Text>
           </View>
 
@@ -140,10 +138,10 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     paddingHorizontal: 4,
   },
-  getStartedText: {
-    fontSize: 17,
+  getTitle: {
+    fontSize: 34,
     color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
+    lineHeight: 32,
     textAlign: 'center',
   },
   tabBarInfoContainer: {
@@ -182,7 +180,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
   },
   helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
+    fontSize: 20,
+    color: '#570674',
   },
 });
