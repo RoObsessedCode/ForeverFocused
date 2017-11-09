@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
   textField: {
     flex: 1,
     margin: 10,
-    backgroundColor: '#1e90ff'
+    backgroundColor: '#1e90ff',
+    borderRadius: 25
   }
 })
