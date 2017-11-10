@@ -43,9 +43,10 @@ export default class PrioritiesScreen extends Component {
             onChangeText={(value) => this.onChangeText(value, 'fieldA')}
 
           />
-          <PickerIOS>
+          <PickerIOS
             selectedValue={this.state.hourOptionA}
             onValueChange={(value) => this.setState({ hourOptionA: value })}
+            >
             <PickerItemIOS label={"1"} value={"1"} />
             <PickerItemIOS label={"2"} value={"2"} />
             <PickerItemIOS label={"3"} value={"3"} />
