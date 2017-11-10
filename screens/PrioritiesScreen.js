@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { View, ScrollView, StyleSheet, Text, TextInput, PickerIOS } from 'react-native';
+import { View, ScrollView, StyleSheet, Text, TextInput} from 'react-native';
+import TimePicker from 'react-native-simple-time-picker'
 import { ExpoLinksView } from '@expo/samples';
 
-const PickerItemIOS = PickerIOS.Item
 export default class PrioritiesScreen extends Component {
   constructor(props) {
     super(props)
@@ -11,7 +11,8 @@ export default class PrioritiesScreen extends Component {
       fieldA: '',
       fieldB: '',
       fieldC: '',
-      hourOptionA: ''
+      selectedHours: 0,
+      selectedMinutes: 0,
 
     }
     this.onChangeText = this.onChangeText.bind(this)
@@ -31,7 +32,8 @@ export default class PrioritiesScreen extends Component {
 
     const numTextFieldInputs = 3
     let textFields = ["fieldA", "fieldB", "fieldC"]
-    const passion = "Today I will get closer to my GREAMS by..."
+    const passion = "Today I will get closer to my DREAMS by..."
+    const { selectedHours, selectedMinutes} = this.state
 
     return (
       <ScrollView>
@@ -41,30 +43,24 @@ export default class PrioritiesScreen extends Component {
             placeholder={passion}
             value={this.state.fieldA}
             onChangeText={(value) => this.onChangeText(value, 'fieldA')}
-
           />
-          <PickerIOS
-            selectedValue={this.state.hourOptionA}
-            onValueChange={(value) => this.setState({ hourOptionA: value })}
-            >
-            <PickerItemIOS label={"1"} value={"1"} />
-            <PickerItemIOS label={"2"} value={"2"} />
-            <PickerItemIOS label={"3"} value={"3"} />
-            <PickerItemIOS label={"4"} value={"4"} />
-            <PickerItemIOS label={"5"} value={"5"} />
-            <PickerItemIOS label={"6"} value={"6"} />
-            <PickerItemIOS label={"7"} value={"7"} />
-            <PickerItemIOS label={"8"} value={"8"} />
-            <PickerItemIOS label={"9"} value={"9"} />
-            <PickerItemIOS label={"10"} value={"10"} />
-            <PickerItemIOS label={"11"} value={"11"} />
-            <PickerItemIOS label={"12"} value={"12"} />
-          </PickerIOS>
+          <View style={styles.timeContainer}>
+
+            <TimePicker
+              selectedHours = {selectedHours}
+              selectedMinutes = {selectedMinutes}
+              onChange={(hours, minutes) => this.setState({ selectedHours: hours, selectedMinutes: minutes})}
+            />
+            <Text style={styles.timeDisplay}>{selectedHours}:{selectedMinutes}</Text>
+
+          </View>
+
           <TextInput style={styles.textField}
             placeholder={passion}
             value={this.state.fieldB}
             onChangeText={(value) => this.onChangeText(value, 'fieldB')}
           />
+
           <TextInput style={styles.textField}
             placeholder={passion}
             value={this.state.fieldC}
@@ -102,5 +98,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#1e90ff',
     borderRadius: 25,
     margin: 40
-  }
+  },
+  timeContainer: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  timeDisplay: {
+    // flex: 1,
+    // height: 25,
+    // padding: 5,
+  },
 })
