@@ -31,7 +31,7 @@ export default class PrioritiesScreen extends Component {
 
     const numTextFieldInputs = 3
     let textFields = ["fieldA", "fieldB", "fieldC"]
-    const passion = "Today I will get closer to my DREAMS by..."
+    const passion = "Today I will get closer to my GREAMS by..."
 
     return (
       <ScrollView>
@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 10,
     backgroundColor: '#1e90ff',
-    borderRadius: 25
+    borderRadius: 25,
+    margin: 40
   }
 })
