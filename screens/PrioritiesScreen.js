@@ -1,22 +1,23 @@
-import React from 'react';
-import { View, ScrollView, StyleSheet, Text, TextInput } from 'react-native';
-import {Select, Option} from "react-native-chooser";
+import React, { Component } from 'react';
+import { View, ScrollView, StyleSheet, Text, TextInput, PickerIOS } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 
-export default class PrioritiesScreen extends React.Component {
-  constructor() {
-    super()
+const PickerItemIOS = PickerIOS.Item
+export default class PrioritiesScreen extends Component {
+  constructor(props) {
+    super(props)
     this.state = {
 
       fieldA: '',
       fieldB: '',
       fieldC: '',
-      hourValue: 'Select me'
+      hourOptionA: ''
 
     }
     this.onChangeText = this.onChangeText.bind(this)
 
   }
+
   static navigationOptions = {
     title: 'Priorities',
   }
@@ -26,14 +27,12 @@ export default class PrioritiesScreen extends React.Component {
 
   }
 
-  onSelect(value, label) {
-    this.setState({hourValue: value})
-  }
-
   render() {
+
     const numTextFieldInputs = 3
     let textFields = ["fieldA", "fieldB", "fieldC"]
     const passion = "Today I will get closer to my DREAMS by..."
+
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -44,30 +43,28 @@ export default class PrioritiesScreen extends React.Component {
             onChangeText={(value) => this.onChangeText(value, 'fieldA')}
 
           />
-          <Select
-            onSelect = {this.onSelect.bind(this)}
-            defaultText = {'Hour:'}
-            textStyle = {{}}
-            >
-            <Option value = '1'>1</Option>
-            <Option value = '2'>2</Option>
-            <Option value = '3'>3</Option>
-            <Option value = '4'>4</Option>
-            <Option value = '5'>5</Option>
-            <Option value = '6'>6</Option>
-            <Option value = '7'>7</Option>
-            <Option value = '8'>8</Option>
-            <Option value = '9'>9</Option>
-            <Option value = '10'>10</Option>
-            <Option value = '11'>11</Option>
-            <Option value = '12'>12</Option>
-          </Select>
+          <PickerIOS>
+            selectedValue={this.state.hourOptionA}
+            onValueChange={(value) => this.setState({ hourOptionA: value })}
+            <PickerItemIOS label={"1"} value={"1"} />
+            <PickerItemIOS label={"2"} value={"2"} />
+            <PickerItemIOS label={"3"} value={"3"} />
+            <PickerItemIOS label={"4"} value={"4"} />
+            <PickerItemIOS label={"5"} value={"5"} />
+            <PickerItemIOS label={"6"} value={"6"} />
+            <PickerItemIOS label={"7"} value={"7"} />
+            <PickerItemIOS label={"8"} value={"8"} />
+            <PickerItemIOS label={"9"} value={"9"} />
+            <PickerItemIOS label={"10"} value={"10"} />
+            <PickerItemIOS label={"11"} value={"11"} />
+            <PickerItemIOS label={"12"} value={"12"} />
+          </PickerIOS>
           <TextInput style={styles.textField}
             placeholder={passion}
             value={this.state.fieldB}
             onChangeText={(value) => this.onChangeText(value, 'fieldB')}
           />
-          <TextInput  style={styles.textField}
+          <TextInput style={styles.textField}
             placeholder={passion}
             value={this.state.fieldC}
             onChangeText={(value) => this.onChangeText(value, 'fieldC')}
