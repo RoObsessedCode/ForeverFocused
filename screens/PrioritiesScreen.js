@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, ScrollView, StyleSheet, Text, TextInput } from 'react-native';
+import {Select, Option} from "react-native-chooser";
 import { ExpoLinksView } from '@expo/samples';
 
 export default class PrioritiesScreen extends React.Component {
@@ -9,7 +10,8 @@ export default class PrioritiesScreen extends React.Component {
 
       fieldA: '',
       fieldB: '',
-      fieldC: ''
+      fieldC: '',
+      hourValue: 'Select me'
 
     }
     this.onChangeText = this.onChangeText.bind(this)
@@ -22,6 +24,10 @@ export default class PrioritiesScreen extends React.Component {
   onChangeText(value, fieldName) {
     this.setState({ [fieldName]: value })
 
+  }
+
+  onSelect(value, label) {
+    this.setState({hourValue: value})
   }
 
   render() {
@@ -38,6 +44,24 @@ export default class PrioritiesScreen extends React.Component {
             onChangeText={(value) => this.onChangeText(value, 'fieldA')}
 
           />
+          <Select
+            onSelect = {this.onSelect.bind(this)}
+            defaultText = {'Hour:'}
+            textStyle = {{}}
+            >
+            <Option value = '1'>1</Option>
+            <Option value = '2'>2</Option>
+            <Option value = '3'>3</Option>
+            <Option value = '4'>4</Option>
+            <Option value = '5'>5</Option>
+            <Option value = '6'>6</Option>
+            <Option value = '7'>7</Option>
+            <Option value = '8'>8</Option>
+            <Option value = '9'>9</Option>
+            <Option value = '10'>10</Option>
+            <Option value = '11'>11</Option>
+            <Option value = '12'>12</Option>
+          </Select>
           <TextInput style={styles.textField}
             placeholder={passion}
             value={this.state.fieldB}
