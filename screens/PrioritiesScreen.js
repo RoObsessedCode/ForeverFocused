@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, StyleSheet, Text, TextInput } from 'react-native';
+import { View, ScrollView, StyleSheet, Text, TextInput, Button } from 'react-native';
 import TimePicker from 'react-native-simple-time-picker'
 import { ExpoLinksView } from '@expo/samples';
 
@@ -20,6 +20,7 @@ export default class PrioritiesScreen extends Component {
 
     }
     this.onChangeText = this.onChangeText.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
 
   }
 
@@ -30,6 +31,10 @@ export default class PrioritiesScreen extends Component {
   onChangeText(value, fieldName) {
     this.setState({ [fieldName]: value })
 
+  }
+
+  onSubmit() {
+    this.setState({fieldA, fieldB: ''})
   }
 
   render() {
@@ -50,6 +55,7 @@ export default class PrioritiesScreen extends Component {
               placeholder={passion}
               value={this.state.fieldA}
               onChangeText={(value) => this.onChangeText(value, 'fieldA')}
+              onSubmitEditing={this.onSubmitFieldA}
             />
 
             <TimePicker style={styles.timeScroller}
@@ -92,6 +98,13 @@ export default class PrioritiesScreen extends Component {
           </View> */}
 
         </View>
+        <Button
+          onPress={this.onSubmit}
+          title="Remind Me"
+          color="#570674"
+
+          accessibilityLabel="Learn more about this purple button"
+        />
       </ScrollView>
     );
   }
@@ -109,6 +122,7 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     backgroundColor: '#fff',
     height: 600,
+    backgroundColor: '#FFFF99',
 
   },
   priContainer: {
@@ -117,17 +131,18 @@ const styles = StyleSheet.create({
   },
   prioritiesTitle: {
     fontSize: 32,
-    color: '#570674',
+    color: '#663399',
     textAlign: 'center',
     marginTop: 15,
-    marginBottom: 15
+    marginBottom: 15,
+    fontWeight: 'bold'
   },
   textField: {
     //flex: 1,
     marginLeft: 25,
     marginRight: 25,
     padding: 5,
-    backgroundColor: '#1e90ff',
+    backgroundColor: '#7ec0ee',// '#DDA0DD',//'#FFFF99', //'#1e90ff'
     borderRadius: 25,
 
   },

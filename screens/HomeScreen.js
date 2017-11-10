@@ -19,46 +19,50 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
+
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-          </View>
 
-          <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
-
-            <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
+          <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+            <View style={styles.welcomeContainer}>
+              <Image
+                source={
+                  __DEV__
+                    ? require('../assets/images/howtofocusimg.png')
+                    : require('../assets/images/robot-prod.png')
+                }
+                style={styles.welcomeImage}
+              />
             </View>
 
-            <Text style={styles.getTitle}>
-              Forever Focused
+            <View style={styles.getStartedContainer}>
+              {this._maybeRenderDevelopmentModeWarning()}
+
+              <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
+                <MonoText style={styles.codeHighlightText}>Home</MonoText>
+              </View>
+
+              <Text style={styles.getTitle}>
+                Forever Focused
             </Text>
-          </View>
+            </View>
 
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
+            <View style={styles.helpContainer}>
+              <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
+                <Text style={styles.helpLinkText}>Carpe Diem</Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
 
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
+          {/* <View style={styles.tabBarInfoContainer}>
+            <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
 
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
-        </View>
+            <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
+              <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
+            </View>
+          </View> */}
+
       </View>
+
     );
   }
 
@@ -66,14 +70,13 @@ export default class HomeScreen extends React.Component {
     if (__DEV__) {
       const learnMoreButton = (
         <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Learn more
+          Learn to Prioritize
         </Text>
       );
 
       return (
         <Text style={styles.developmentModeText}>
-          Development mode is enabled, your app will be slower but you can use useful development
-          tools. {learnMoreButton}
+          'Decide what you want, decide what you are willing to exchange for it. Establish your priorities and go to work' - H. L. Hunt {learnMoreButton}
         </Text>
       );
     } else {
@@ -86,7 +89,7 @@ export default class HomeScreen extends React.Component {
   }
 
   _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
+    WebBrowser.openBrowserAsync('https://www.liquidplanner.com/blog/how-to-prioritize-work-when-everythings-1/');
   };
 
   _handleHelpPress = () => {
@@ -99,7 +102,7 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFF99'
   },
   developmentModeText: {
     marginBottom: 20,
@@ -110,6 +113,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingTop: 30,
+    alignItems: 'center',
   },
   welcomeContainer: {
     alignItems: 'center',
