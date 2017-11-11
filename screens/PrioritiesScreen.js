@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, StyleSheet, Text, TextInput, Button } from 'react-native';
+import { AsyncStorage, View, ScrollView, StyleSheet, Text, TextInput, Button } from 'react-native';
 import ModalDropdown from 'react-native-modal-dropdown';
 import TimePicker from 'react-native-simple-time-picker'
 import { ExpoLinksView } from '@expo/samples';
@@ -20,9 +20,19 @@ export default class PrioritiesScreen extends Component {
       selectedMinutesC: 0,
 
     }
+    this.setFieldA = this.setFieldA.bind(this)
     this.onChangeText = this.onChangeText.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
 
+  }
+  componentDidMount() {
+    return AsyncStorage.getItem('fieldA')
+      .then((value) => this.setState({'fieldA': value}))
+  }
+
+  setFieldA(value) {
+    AsyncStorage.setItem('fieldA', value)
+    this.setState({'fieldA': value})
   }
 
   static navigationOptions = {
@@ -58,7 +68,7 @@ export default class PrioritiesScreen extends Component {
             <TextInput style={styles.textField}
               placeholder={passion}
               value={this.state.fieldA}
-              onChangeText={(value) => this.onChangeText(value, 'fieldA')}
+              onChangeText={this.setFieldA}
               onSubmitEditing={this.onSubmitFieldA}
             />
 
