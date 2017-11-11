@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, ScrollView, StyleSheet, Text, TextInput, Button } from 'react-native';
+import ModalDropdown from 'react-native-modal-dropdown';
 import TimePicker from 'react-native-simple-time-picker'
 import { ExpoLinksView } from '@expo/samples';
 
@@ -34,14 +35,14 @@ export default class PrioritiesScreen extends Component {
   }
 
   onSubmit() {
-    this.setState({fieldA: '', fieldB: ''})
+    this.setState({ fieldA: '', fieldB: '' })
   }
 
   render() {
 
     const numTextFieldInputs = 3
     let textFields = ["fieldA", "fieldB", "fieldC"]
-    const passion = "Today I will get closer to my DREAMS by..."
+    const passion = "Today I reach for my DREAMS by..."
     const { selectedHoursA, selectedMinutesA, selectedHoursB, selectedMinutesB, selectedHoursC, selectedMinutesC } = this.state
 
     return (
@@ -51,6 +52,9 @@ export default class PrioritiesScreen extends Component {
 
           <View style={styles.priContainer}>
             <Text style={styles.timeDisplay}>{selectedHoursA}:{selectedMinutesA}</Text>
+
+            <ModalDropdown style={styles.importanceDisplay} defaultValue={"Importance: "} options={[1, 2, 3, 4, 5]} />
+
             <TextInput style={styles.textField}
               placeholder={passion}
               value={this.state.fieldA}
@@ -68,10 +72,14 @@ export default class PrioritiesScreen extends Component {
 
           <View style={styles.priContainer}>
             <Text style={styles.timeDisplay}>{selectedHoursB}:{selectedMinutesB}</Text>
+            <ModalDropdown style={styles.importanceDisplay} defaultValue={"Importance: "} options={[1, 2, 3, 4, 5]} />
+
             <TextInput style={styles.textField}
               placeholder={passion}
               value={this.state.fieldB}
               onChangeText={(value) => this.onChangeText(value, 'fieldB')}
+              onSubmitEditing={this.onSubmitFieldB}
+
             />
 
             <TimePicker style={styles.timeScroller}
@@ -81,21 +89,6 @@ export default class PrioritiesScreen extends Component {
             />
 
           </View>
-          {/* <View style={styles.priContainer}>
-            <Text style={styles.timeDisplay}>{selectedHoursC}:{selectedMinutesC}</Text>
-            <TextInput style={styles.textField}
-              placeholder={passion}
-              value={this.state.fieldC}
-              onChangeText={(value) => this.onChangeText(value, 'fieldC')}
-            />
-
-            <TimePicker style={styles.timeScroller}
-              selectedHours={selectedHoursC}
-              selectedMinutes={selectedMinutesC}
-              onChange={(hours, minutes) => this.setState({ selectedHoursC: hours, selectedMinutesC: minutes })}
-            />
-
-          </View> */}
 
         </View>
         <Button
@@ -148,13 +141,11 @@ const styles = StyleSheet.create({
   },
   timeScroller: {
   },
-  // timeContainer: {
-  //   flex: 1,
-  //   backgroundColor: '#fff',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  // },
+
   timeDisplay: {
-    textAlign: 'center'
+    textAlign: 'center',
+  },
+  importanceDisplay: {
+    textAlign: 'left',
   },
 })
