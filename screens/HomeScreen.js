@@ -42,7 +42,7 @@ export default class HomeScreen extends React.Component {
               </View>
 
               <Text style={styles.getTitle}>
-                Forever Focused
+                Forever Focused!!
             </Text>
             </View>
 
@@ -50,6 +50,14 @@ export default class HomeScreen extends React.Component {
               <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
                 <Text style={styles.helpLinkText}>Carpe Diem</Text>
               </TouchableOpacity>
+            </View>
+            <View>
+              <Image
+              source = {require('../assets/images/howtofocusimg.png')}
+
+              >
+
+              </Image>
             </View>
           </ScrollView>
 

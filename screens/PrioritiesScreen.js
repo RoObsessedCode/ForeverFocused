@@ -34,7 +34,7 @@ export default class PrioritiesScreen extends Component {
   }
 
   onSubmit() {
-    this.setState({fieldA, fieldB: ''})
+    this.setState({fieldA: '', fieldB: ''})
   }
 
   render() {
