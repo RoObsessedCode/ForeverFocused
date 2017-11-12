@@ -55,18 +55,13 @@ export default class HomeScreen extends React.Component {
               <Text style={styles.helpLinkText}>Carpe Diem</Text>
             </TouchableOpacity>
           </View>
-          <View>
-            {/* <Image
-              source={require('../assets/images/howtofocusimg.png')}
 
-            >
 
-            </Image> */}
             <Text>{this.props.navigation.state.params && this.props.navigation.state.params.priority1}</Text>
             <Text style={styles.importanceDisplay}>{this.props.navigation.state.params && 'Importance: '}{this.props.navigation.state.params && this.props.navigation.state.params.importanceA}{'\n'}{'\n'}</Text>
 
             <Text>{this.props.navigation.state.params && this.props.navigation.state.params.priority2}</Text>
-          </View>
+
           <Text style={styles.importanceDisplay}>{this.props.navigation.state.params && 'Importance: '}{this.props.navigation.state.params && this.props.navigation.state.params.importanceB}</Text>
         </ScrollView>
 

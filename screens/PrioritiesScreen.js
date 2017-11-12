@@ -88,7 +88,7 @@ export default class PrioritiesScreen extends Component {
 
           <View style={styles.priContainer}>
             <Text style={styles.timeDisplay}>{selectedHoursB}:{selectedMinutesB}</Text>
-            <ModalDropdown style={styles.importanceDisplay} defaultValue={"Importance: "} options={[0, 1, 2, 3, 4, 5]} />
+            <ModalDropdown style={styles.importanceDisplay} defaultValue={"Importance: "} options={[0, 1, 2, 3, 4, 5]} onSelect={(level) => this.setState({ importanceB: level})}/>
 
             <TextInput style={styles.textField}
               placeholder={passion}
