@@ -21,19 +21,26 @@ export default class PrioritiesScreen extends Component {
 
     }
     this.setFieldA = this.setFieldA.bind(this)
+    //this.setFieldB = this.setFieldB.bind(this)
     this.onChangeText = this.onChangeText.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
 
   }
   componentDidMount() {
     return AsyncStorage.getItem('fieldA')
-      .then((value) => this.setState({'fieldA': value}))
+      .then((value) => this.setState({ 'fieldA': value }))
+
   }
 
   setFieldA(value) {
     AsyncStorage.setItem('fieldA', value)
-    this.setState({'fieldA': value})
+    this.setState({ 'fieldA': value })
   }
+
+  // setFieldB(value) {
+  //   AsyncStorage.setItem('fieldB', value)
+  //   this.setState({ 'fieldB': value })
+  // }
 
   static navigationOptions = {
     title: 'Priorities',
@@ -50,7 +57,7 @@ export default class PrioritiesScreen extends Component {
 
   render() {
     console.log("nav: ", this.props.navigation)
-    const {navigate} = this.props.navigation
+    const { navigate } = this.props.navigation
 
     //console.log("props: ", this.props)
 
@@ -91,7 +98,8 @@ export default class PrioritiesScreen extends Component {
             <TextInput style={styles.textField}
               placeholder={passion}
               value={this.state.fieldB}
-              onChangeText={(value) => this.onChangeText(value, 'fieldB')}
+             // onChangeText={(value) => this.onChangeText(value, 'fieldB')}
+              onChangeText={this.setFieldB}
               onSubmitEditing={this.onSubmitFieldB}
 
             />
@@ -107,7 +115,7 @@ export default class PrioritiesScreen extends Component {
         </View>
         <Button
           //onPress={this.onSubmit}
-          onPress={() => navigate('Home', {priority1: this.state.fieldA, priority2: this.state.fieldB})}
+          onPress={() => navigate('Home', { priority1: this.state.fieldA, priority2: this.state.fieldB })}
           title="Remind Me"
           color="#570674"
 
