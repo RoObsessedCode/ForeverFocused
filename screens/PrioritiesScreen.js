@@ -88,13 +88,13 @@ export default class PrioritiesScreen extends Component {
 
           <View style={styles.priContainer}>
             <Text style={styles.timeDisplay}>{selectedHoursB}:{selectedMinutesB}</Text>
-            <ModalDropdown style={styles.importanceDisplay} defaultValue={"Importance: "} options={[1, 2, 3, 4, 5]} />
+            <ModalDropdown style={styles.importanceDisplay} defaultValue={"Importance: "} options={[0, 1, 2, 3, 4, 5]} />
 
             <TextInput style={styles.textField}
               placeholder={passion}
               value={this.state.fieldB}
-             // onChangeText={(value) => this.onChangeText(value, 'fieldB')}
-              onChangeText={this.setFieldB}
+              onChangeText={(value) => this.onChangeText(value, 'fieldB')}
+              //onChangeText={this.setFieldB}
               onSubmitEditing={this.onSubmitFieldB}
 
             />
@@ -110,7 +110,7 @@ export default class PrioritiesScreen extends Component {
         </View>
         <Button
           //onPress={this.onSubmit}
-          onPress={() => navigate('Home', { priority1: this.state.fieldA, priority2: this.state.fieldB, importanceA: this.state.importanceA })}
+          onPress={() => navigate('Home', { priority1: this.state.fieldA, priority2: this.state.fieldB, importanceA: this.state.importanceA, importanceB: this.state.importanceB  })}
           title="Remind Me"
           color="#570674"
 

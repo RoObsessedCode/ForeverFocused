@@ -63,10 +63,11 @@ export default class HomeScreen extends React.Component {
 
             </Image> */}
             <Text>{this.props.navigation.state.params && this.props.navigation.state.params.priority1}</Text>
-            <Text>{this.props.navigation.state.params && this.props.navigation.state.params.importanceA}</Text>
+            <Text style={styles.importanceDisplay}>{this.props.navigation.state.params && 'Importance: '}{this.props.navigation.state.params && this.props.navigation.state.params.importanceA}{'\n'}{'\n'}</Text>
 
             <Text>{this.props.navigation.state.params && this.props.navigation.state.params.priority2}</Text>
           </View>
+          <Text style={styles.importanceDisplay}>{this.props.navigation.state.params && 'Importance: '}{this.props.navigation.state.params && this.props.navigation.state.params.importanceB}</Text>
         </ScrollView>
 
         {/* <View style={styles.tabBarInfoContainer}>
@@ -202,5 +203,8 @@ const styles = StyleSheet.create({
   helpLinkText: {
     fontSize: 20,
     color: '#570674',
+  },
+  importanceDisplay: {
+    textAlign: 'center',
   },
 });
