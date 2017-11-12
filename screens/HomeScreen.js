@@ -63,6 +63,8 @@ export default class HomeScreen extends React.Component {
 
             </Image> */}
             <Text>{this.props.navigation.state.params && this.props.navigation.state.params.priority1}</Text>
+            <Text>{this.props.navigation.state.params && this.props.navigation.state.params.importanceA}</Text>
+
             <Text>{this.props.navigation.state.params && this.props.navigation.state.params.priority2}</Text>
           </View>
         </ScrollView>

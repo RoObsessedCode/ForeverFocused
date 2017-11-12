@@ -11,13 +11,8 @@ export default class PrioritiesScreen extends Component {
 
       fieldA: '',
       fieldB: '',
-      fieldC: '',
-      selectedHoursA: 0,
-      selectedMinutesA: 0,
-      selectedHoursB: 0,
-      selectedMinutesB: 0,
-      selectedHoursC: 0,
-      selectedMinutesC: 0,
+      importanceA: 0,
+      importanceB: 0
 
     }
     this.setFieldA = this.setFieldA.bind(this)
@@ -74,7 +69,7 @@ export default class PrioritiesScreen extends Component {
           <View style={styles.priContainer}>
             <Text style={styles.timeDisplay}>{selectedHoursA}:{selectedMinutesA}</Text>
 
-            <ModalDropdown style={styles.importanceDisplay} defaultValue={"Importance: "} options={[1, 2, 3, 4, 5]} />
+            <ModalDropdown style={styles.importanceDisplay} defaultValue={"Importance: "} options={[0, 1, 2, 3, 4, 5]} onSelect={(level) => this.setState({ importanceA: level})}/>
 
             <TextInput style={styles.textField}
               placeholder={passion}
@@ -115,7 +110,7 @@ export default class PrioritiesScreen extends Component {
         </View>
         <Button
           //onPress={this.onSubmit}
-          onPress={() => navigate('Home', { priority1: this.state.fieldA, priority2: this.state.fieldB })}
+          onPress={() => navigate('Home', { priority1: this.state.fieldA, priority2: this.state.fieldB, importanceA: this.state.importanceA })}
           title="Remind Me"
           color="#570674"
 
@@ -169,6 +164,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   importanceDisplay: {
-    textAlign: 'left',
+    //textAlign: 'left',
   },
 })
