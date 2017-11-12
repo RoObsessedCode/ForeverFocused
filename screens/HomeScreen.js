@@ -18,50 +18,56 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
+
+    console.log("Beyonce loving")
+    console.log("homeScr--props: ", this.props)
+    console.log("homeScr--params: ", typeof this.props.navigation.state.params)
     return (
 
       <View style={styles.container}>
 
-          <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-            <View style={styles.welcomeContainer}>
-              <Image
-                source={
-                  __DEV__
-                    ? require('../assets/images/howtofocusimg.png')
-                    : require('../assets/images/robot-prod.png')
-                }
-                style={styles.welcomeImage}
-              />
+        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+          <View style={styles.welcomeContainer}>
+            <Image
+              source={
+                __DEV__
+                  ? require('../assets/images/howtofocusimg.png')
+                  : require('../assets/images/robot-prod.png')
+              }
+              style={styles.welcomeImage}
+            />
+          </View>
+
+          <View style={styles.getStartedContainer}>
+            {this._maybeRenderDevelopmentModeWarning()}
+
+            <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
+              <MonoText style={styles.codeHighlightText}>Home</MonoText>
             </View>
 
-            <View style={styles.getStartedContainer}>
-              {this._maybeRenderDevelopmentModeWarning()}
-
-              <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-                <MonoText style={styles.codeHighlightText}>Home</MonoText>
-              </View>
-
-              <Text style={styles.getTitle}>
-                Forever Focused!!
+            <Text style={styles.getTitle}>
+              Forever Focused!!
             </Text>
-            </View>
+          </View>
 
-            <View style={styles.helpContainer}>
-              <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-                <Text style={styles.helpLinkText}>Carpe Diem</Text>
-              </TouchableOpacity>
-            </View>
-            <View>
-              <Image
-              source = {require('../assets/images/howtofocusimg.png')}
+          <View style={styles.helpContainer}>
+            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
+              <Text style={styles.helpLinkText}>Carpe Diem</Text>
+            </TouchableOpacity>
+          </View>
+          <View>
+            {/* <Image
+              source={require('../assets/images/howtofocusimg.png')}
 
-              >
+            >
 
-              </Image>
-            </View>
-          </ScrollView>
+            </Image> */}
+            <Text>{this.props.navigation.state.params && this.props.navigation.state.params.priority1}</Text>
+            <Text>{this.props.navigation.state.params && this.props.navigation.state.params.priority2}</Text>
+          </View>
+        </ScrollView>
 
-          {/* <View style={styles.tabBarInfoContainer}>
+        {/* <View style={styles.tabBarInfoContainer}>
             <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
 
             <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>

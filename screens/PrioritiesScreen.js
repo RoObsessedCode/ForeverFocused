@@ -49,6 +49,10 @@ export default class PrioritiesScreen extends Component {
   }
 
   render() {
+    console.log("nav: ", this.props.navigation)
+    const {navigate} = this.props.navigation
+
+    //console.log("props: ", this.props)
 
     const numTextFieldInputs = 3
     let textFields = ["fieldA", "fieldB", "fieldC"]
@@ -102,7 +106,8 @@ export default class PrioritiesScreen extends Component {
 
         </View>
         <Button
-          onPress={this.onSubmit}
+          //onPress={this.onSubmit}
+          onPress={() => navigate('Home', {priority1: this.state.fieldA, priority2: this.state.fieldB})}
           title="Remind Me"
           color="#570674"
 
