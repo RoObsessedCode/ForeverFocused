@@ -56,13 +56,25 @@ export default class HomeScreen extends React.Component {
             </TouchableOpacity>
           </View>
 
-
-            <Text>{this.props.navigation.state.params && this.props.navigation.state.params.priority1}</Text>
+          {/* <Text>{this.props.navigation.state.params && this.props.navigation.state.params.priority1}</Text>
             <Text style={styles.importanceDisplay}>{this.props.navigation.state.params && 'Importance: '}{this.props.navigation.state.params && this.props.navigation.state.params.importanceA}{'\n'}{'\n'}</Text>
 
             <Text>{this.props.navigation.state.params && this.props.navigation.state.params.priority2}</Text>
 
-          <Text style={styles.importanceDisplay}>{this.props.navigation.state.params && 'Importance: '}{this.props.navigation.state.params && this.props.navigation.state.params.importanceB}</Text>
+          <Text style={styles.importanceDisplay}>{this.props.navigation.state.params && 'Importance: '}{this.props.navigation.state.params && this.props.navigation.state.params.importanceB}</Text>  */}
+
+            {
+              this.props.navigation.state.params && this.props.navigation.state.params.importanceA > this.props.navigation.state.params.importanceB ?
+
+               <Text style={styles.importanceDisplay}>
+                 {this.props.navigation.state.params.priority1}{'\n'}{this.props.navigation.state.params && 'Importance: '}{this.props.navigation.state.params && this.props.navigation.state.params.importanceA}{'\n'}{'\n'}</Text>
+
+                :
+                <Text style={styles.importanceDisplay}>{this.props.navigation.state.params && this.props.navigation.state.params.priority2}{'\n'}{this.props.navigation.state.params && 'Importance: '}{this.props.navigation.state.params && this.props.navigation.state.params.importanceB}
+
+                </Text>
+            }
+
         </ScrollView>
 
         {/* <View style={styles.tabBarInfoContainer}>
